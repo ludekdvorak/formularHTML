@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang=cs>
+    <head>
+        <meta charset="utf-8" />
+        <title>Ukol</title>
+        <style type="text/css" media="screen">
+           * {
+                 margin: 0;
+                 padding: 0;
+            }
+            html, body {
+                height: 100%;
+                text-align: center;
+            }
+            body {
+                background-color: #eee;
+                width: 50%;
+                height: 40%;
+                font-family: sans-serif;
+                font-size: 16px;
+                margin: 0 auto;
+            }
+            div {
+	            border: 1px solid;
+	            width: 100%;
+	            box-sizing: border-box;
+    	    }
+
+            #nadpis {
+                width: 100%;
+                height: 50%;
+                display: block;
+                background-color: transparent;
+                background: url('https://upload.wikimedia.org/wikipedia/commons/f/fe/%C4%8Cesk%C3%A1_spo%C5%99itelna_-_logo_2023.png');
+            }
+            #nadpis img {
+                width: 29.5%;
+                height: 100%;
+                display: inline-block;
+                float:left;
+            }
+            #nadpis p {
+                padding-right: 60%; 
+                padding-top: 1px;
+                display: inline-block;
+            
+            }
+        
+            #obsah {
+                text-align: left;
+                width: 100%;
+                height: 90%;
+                display: inline-block;
+                padding: 10px;
+                background-color: rgb(106, 223, 231)
+                
+            }
+            #obsah p{
+                padding-left: 10px;
+            }
+            #obsah form{
+                padding-left: 10px;
+            }
+            #paticka {
+                width: 100%;
+                height: 10%;
+                display: inline-block;
+                float: left;
+            }
+            #widget{
+                width: 100px;
+                height: auto;   
+                position: fixed;
+                top: 6%;
+                right: 20%;
+                float: left;
+            }
+            #widget img{
+                width: 90%;
+                height: 90%;
+                
+            }
+            @media (max-width:640px)
+         {
+            
+	        #widget, #nadpis img {
+		        display: none;
+	        }
+	        html, body {
+		        height: auto;
+		        width: 90%;
+		        margin: 2.5% auto;
+	        }
+	        #nadpis, #menuT, #obsah, #paticka {
+		        width: 100%; 
+            }
+	        ul li {
+                margin: 0 20px 10px 0;
+                padding: 0;
+                width: 40%;
+                float: left;
+                
+            
+            }
+            .nobull {
+             list-style-type: none;
+             display: none;
+             }
+        }
+        
+        </style>
+    </head>
+    <body>
+        <div id="nadpis">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/%C4%8Cesk%C3%A1_spo%C5%99itelna_-_logo_2023.png">
+        </div>
+        <div id="obsah">
+            <script type="text/javascript">
+                window.addEventListener('load', function (e) {
+                    function trim(value) {
+                        return value.replace(/^[\s\t]+/g, '').replace(/[\s\t]+$/g, '');
+                    }
+                    // Načtení uložených hodnot formuláře ukládá se pouze ale po odeslání formuláře :/
+                    var nameValue = localStorage.getItem('nf');
+                    var icoValue = localStorage.getItem('icoo');
+                    var birthDateValue = localStorage.getItem('birthDate');
+                    var emailValue = localStorage.getItem('email');
+
+                    // Nastavení hodnot formuláře ukládá se pouze ale po odeslání formuláře :/
+                    if (nameValue) {
+                        document.getElementById('nf').value = nameValue;
+                    }
+                    if (icoValue) {
+                        document.getElementById('icoo').value = icoValue;
+                    }
+                    if (birthDateValue) {
+                        document.getElementById('birth-date').value = birthDateValue;
+                    }
+                    if (emailValue) {
+                        document.getElementById('email').value = emailValue;
+                    }
+
+                    document.getElementById('person-form').addEventListener('submit', function (e) {
+                        var
+                            name = trim(document.getElementById('nf').value),
+                            ico = trim(document.getElementById('icoo').value),
+                            bd = trim(document.getElementById('birth-date').value),
+                            em = trim(document.getElementById('email').value);
+
+                        // Uložení hodnot
+                        localStorage.setItem('nf', name);
+                        localStorage.setItem('icoo', ico);
+                        localStorage.setItem('birthDate', bd);
+                        localStorage.setItem('email', em);
+
+                        if (!name || /[^a-záčďéěíňóřšťúůýž]\s+[^a-záčďéěíňóřšťúůýž]/gi.test(name)) {
+                            alert('Formulářové pole „Nazev firmy“ musí být správně vyplněno!');
+                            e.preventDefault();
+                            return false;
+                        }
+                        if (!/[0-9]|[1-9][0-9]$/gi.test(ico)) {
+                            alert('Formulářové pole „IČO“ musí být správně vyplněno!');
+                            e.preventDefault();
+                            return false;
+                        }
+                        if (!/^[0-9]{2}\.[0-9]{2}\.[0-9]{4}$/gi.test(bd)) {
+                            alert('Formulářové pole „Datum narození“ musí být správně vyplněno!');
+                            e.preventDefault();
+                            return false;
+                        }
+                        if (!/^[a-z_\.\-]+@[a-z_\.\-]+[a-z]{2,3}$/gi.test(em)) {
+                            alert('Formulářové pole „Email“ musí být správně vyplněno!');
+                            e.preventDefault();
+                            return false;
+                        }
+                        document.getElementById('person-form').action = 'ukol_dvorak_sporitelna - Copy.html'; // dostane nás na jinou stránku
+                        return true; 
+                    });
+                });
+            </script>
+            <p>Hlavní obsah</p>
+            <form id="person-form" method="post" action="ukol_dvorak.html">
+                <label for="nf">Název firmy:</label><br>
+                <input type="text" id="nf" name="nf" value="" placeholder="Česká spořitelna, a.s."><br>
+                <label for="icoo">Ičo:</label><br>
+                <input type="text" id="icoo" name="icoo" value="" placeholder="45244782"><br>
+                <label for="dnarozeni">Datum založení:</label><br>
+                <input type="text" name="birthDate" id="birth-date" value="" placeholder="dd.mm.rrrr" /><br>
+                <label for="dnarozeni">E-mail:</label><br>
+                <input type="text" name="email" id="email" value="" placeholder="csas@csas.cz" /><br>
+                <input type="submit" formaction="ukol_dvorak_sporitelna - Copy.html" value="Potvrdit a odeslat">
+        </div>
+
+        <div id="widget">
+            <p>Plovoucí widget</p>
+            <img src="https://scontent.fprg4-1.fna.fbcdn.net/v/t39.30808-6/324498856_1010618326995979_4402627114456901361_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ZOjmaeJ1GWcAX99JATn&_nc_ht=scontent.fprg4-1.fna&oh=00_AfD5QyCZcR3nhMesZeWZsLFHhF7lNWq5KdZc3k5nSplq_w&oe=6436D0F7">
+        </div>
+        </div>
+        <div id="paticka">
+            <p>Úkol Dvořák Luděk 11.04.2023</p>
+        </div>
+
+
+    </body>
+
+</style>
