@@ -79,7 +79,7 @@
                 height: 90%;
                 
             }
-            @media (max-width:640px)
+            @media (max-width:640px) // zobrazení mobilních zařízení
          {
             
 	        #widget, #nadpis img {
@@ -115,7 +115,7 @@
         </div>
         <div id="obsah">
             <script type="text/javascript">
-    window.addEventListener('load', function (e) {
+    window.addEventListener('load', function (e) { // getovací funkce čistě pro zobrazení výsledného formuláře
         var nameValue = localStorage.getItem('nf');
         var icoValue = localStorage.getItem('icoo');
         var birthDateValue = localStorage.getItem('birthDate');
@@ -135,7 +135,7 @@
 
         </div>
 
-        <div id="widget">
+        <div id="widget"> // opět widget k zobrazení reklamy
             <p>Plovoucí widget</p>
             <img src="https://scontent.fprg4-1.fna.fbcdn.net/v/t39.30808-6/324498856_1010618326995979_4402627114456901361_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ZOjmaeJ1GWcAX99JATn&_nc_ht=scontent.fprg4-1.fna&oh=00_AfD5QyCZcR3nhMesZeWZsLFHhF7lNWq5KdZc3k5nSplq_w&oe=6436D0F7">
         </div>
