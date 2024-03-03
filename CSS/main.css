@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: auto;
+    text-align: center;
+}
+body {
+    background-color: #eee;
+    width: 50%;
+    height: 40%;
+    font-family: sans-serif;
+    font-size: 16px;
+    margin: 0 auto;
+}
+div {
+    border: 1px solid;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#nadpis {
+    width: 100%;
+    height: 50%;
+    display: block;
+    background-color: transparent;
+}
+#nadpis img {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    float:left;
+}
+#nadpis p {
+    padding-right: 60%;
+    padding-top: 1px;
+    display: inline-block;
+
+}
+
+#obsah {
+    text-align: left;
+    width: 100%;
+    height: 90%;
+    display: inline-block;
+    padding: 10px;
+    background-color: rgb(100, 150, 250)
+
+}
+#obsah p{
+    padding-left: 10px;
+}
+#obsah form{
+    padding-left: 10px;
+}
+#paticka {
+    width: 100%;
+    height: 10%;
+    display: inline-block;
+    float: left;
+}
+#widget{
+    width: 100px;
+    height: auto;
+    position: fixed;
+    top: 2%;
+    right: 15%;
+    float: left;
+}
+#widget img{
+    width: 100%;
+    height: 100%;
+
+}
+@media (max-width:640px)
+                                                      { // zobrazení pro telefony 640px
+
+    #widget, #nadpis img {
+        display: none; // odstranění přebytečného obsahu, aby šířka a i výška pro telefon byla optimální
+    }
+    html, body {
+        height: auto;
+        width: 90%;
+        margin: 2.5% auto;
+    }
+    #nadpis, #menuT, #obsah, #paticka {
+        width: 100%;
+    }
+    ul li {
+        margin: 0 20px 10px 0;
+        padding: 0;
+        width: 40%;
+        float: left;
+
+
+    }
+    .nobull {
+        list-style-type: none;
+        display: none;
+    }
+}
